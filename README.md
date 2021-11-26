@@ -8,6 +8,26 @@
 
 ![](fig/overview.png)
 
+# 目录
+
+工具复现
+
+- 工具验证
+- 运行视频
+- 项目文档
+- 代码规范
+- 复现难度
+
+工具理解
+
+- 核心算法
+- 功能模块
+- 输入输出
+- PPT展示
+- 复现难度
+
+
+
 ## 依赖
 
 你可能需要至少**1个GPU**，**11GB内存用于训练，以及**200GB可用磁盘空间用于存储VQAv2数据集。我们强烈建议使用SSD驱动器，以保证高速I/O。
@@ -128,21 +148,4 @@ python main.py --attack_only --attack_mode v --attack_al pgd --alpha 0.5 --itera
 ```
 
 All the attackers act as a white-box attacker.
-
-## License
-
-The code is released under the [MIT License](https://github.com/zaynmi/semantic-equivalent-da-for-vqa/blob/master/LICENSE)
-
-## Citing
-
-If this repository is helpful for your research, we'd really appreciate it if you could cite the following paper:
-
-```
-@inproceedings{tang2020semantic,
-  title={Semantic Equivalent Adversarial Data Augmentation for Visual Question Answering},
-  author={Tang, Ruixue and Ma,Chao and Zhang, Wei Emma and Wu, Qi and Yang, Xiaokang},
-  booktitle={European Conference on Computer Vision (ECCV)},
-  year={2020}
-}
-```
 
