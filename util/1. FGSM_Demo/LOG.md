@@ -76,7 +76,7 @@ $$
 X_{0}^{a d v}=X, \quad X_{N+1}^{a d v}=C l i p_{X, \epsilon}\left\{X_{N}^{a d v}+\alpha \operatorname{sign}\left(\nabla_{x} J\left(X_{N}^{a d v}, y_{\text {true }}\right)\right)\right\}
 $$
 
-## FGSM-Demo
+## IFGSM-Demo
 
 ### 依赖
 
@@ -93,6 +93,8 @@ $$
 4. 模型
 
    https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5
+
+## 有目标对抗攻击
 
 ### 代码分解
 
@@ -166,6 +168,8 @@ plot_img(x)
 
 肉眼基本看不出来有什么变化。
 
+#### 梯度攻击
+
 下面进行梯度攻击，获取新的图像并进行预测。
 
 ``` python
@@ -217,3 +221,106 @@ plot_img(x_adv-x)
 而预测成为目标类别，也就是`cucumber`迅速上升：
 
 ![res_orange](res_orange.png)
+
+## 无目标对抗攻击
+
+### 代码分解
+
+#### 导入依赖
+
+``` python
+import numpy as np
+from keras.applications import vgg16
+from keras.preprocessing import image
+from keras.activations import relu, softmax
+import keras.backend as K
+import matplotlib.pyplot as plt
+%matplotlib inline
+```
+
+#### 加载VGG16预训练模型
+
+``` python
+model = vgg16.VGG16(weights='imagenet')
+```
+
+#### 第一次预测
+
+``` python
+# 导入火烈鸟图片
+img_path = 'flamingo.jpg'
+img = image.load_img(img_path, target_size=(224,224))
+
+plt.imshow(img)
+plt.grid('off')
+plt.axis('off')
+
+# 和之前一样
+x = image.img_to_array(img)
+x = np.expand_dims(x, axis=0)
+x = vgg16.preprocess_input(x)
+
+# 第一次预测
+preds = model.predict(x)
+initial_class = np.argmax(preds)
+print('Predicted:', vgg16.decode_predictions(preds, top=3)[0])
+```
+
+![flamingo](flamingo.jpg)
+
+结果如下：
+
+```
+Predicted: [('n02007558', 'flamingo', 0.99999607), ('n02006656', 'spoonbill', 1.8544616e-06), ('n02009912', 'American_egret', 8.5071696e-07)]
+```
+
+结果显示，它是一只火烈鸟。
+
+#### 梯度攻击
+
+下面进行梯度攻击，获取新的图像并进行预测。
+
+``` python
+# 设置变量
+epochs = 400
+epsilon = 0.01
+prev_probs = []
+
+for i in range(epochs): 
+    target = K.one_hot(initial_class, 1000)
+    
+    loss = K.categorical_crossentropy(target, model.output)
+    grads = K.gradients(loss, model.input)
+
+    delta = K.sign(grads[0])
+    x_noise = x_noise + delta
+
+    x_adv = x_adv + epsilon*delta
+
+    x_adv = sess.run(x_adv, feed_dict={model.input:x})
+    preds = model.predict(x_adv)
+
+    prev_probs.append(preds[0][initial_class])
+
+    if i%20==0:
+        print(i, preds[0][initial_class], vgg16.decode_predictions(preds, top=3)[0])
+
+plot_img(x_adv)
+plot_img(x_adv-x)
+```
+
+结果如下：
+
+```
+0 0.9999956 [('n02007558', 'flamingo', 0.9999956), ('n02006656', 'spoonbill', 2.0940493e-06), ('n02009912', 'American_egret', 9.710699e-07)]
+20 0.9999491 [('n02007558', 'flamingo', 0.9999491), ('n02006656', 'spoonbill', 1.9610497e-05), ('n02009912', 'American_egret', 1.08507675e-05)]
+40 0.999637 [('n02007558', 'flamingo', 0.999637), ('n02006656', 'spoonbill', 0.00011842114), ('n02009912', 'American_egret', 7.331572e-05)]
+60 0.99812275 [('n02007558', 'flamingo', 0.99812275), ('n02006656', 'spoonbill', 0.0005140069), ('n02009912', 'American_egret', 0.00035199246)]
+80 0.99239904 [('n02007558', 'flamingo', 0.99239904), ('n02006656', 'spoonbill', 0.0017014268), ('n02009912', 'American_egret', 0.0012523659)]
+100 0.976348 [('n02007558', 'flamingo', 0.976348), ('n02006656', 'spoonbill', 0.004375022), ('n02012849', 'crane', 0.0034781264)]
+120 0.93764174 [('n02007558', 'flamingo', 0.93764174), ('n02006656', 'spoonbill', 0.009315101), ('n02012849', 'crane', 0.00835958)]
+140 0.85389256 [('n02007558', 'flamingo', 0.85389256), ('n02012849', 'crane', 0.017473213), ('n02006656', 'spoonbill', 0.017150726)]
+```
+
+发现预测是火烈鸟的准确率迅速下降。
+
