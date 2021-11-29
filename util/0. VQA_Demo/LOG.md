@@ -1,6 +1,26 @@
 # VQA_Demo
 
-[toc]
+- [VQA_Demo](#vqa_demo)
+  - [开始的想法](#开始的想法)
+  - [我使用的VQA架构](#我使用的vqa架构)
+    - [依赖](#依赖)
+  - [代码分解](#代码分解)
+    - [开始准备](#开始准备)
+      - [载入目录](#载入目录)
+      - [载入模型和权重](#载入模型和权重)
+        - [模型原理](#模型原理)
+    - [图像特征提取](#图像特征提取)
+      - [预训练 VGG Net (VGG-16)](#预训练-vgg-net-vgg-16)
+      - [读取模型](#读取模型)
+      - [绘制模型](#绘制模型)
+      - [提取图像特征](#提取图像特征)
+    - [文字嵌入](#文字嵌入)
+      - [尝试嵌入](#尝试嵌入)
+    - [VQA模型](#vqa模型)
+  - [运行](#运行)
+- [What vehicle is in the picture ?](#what-vehicle-is-in-the-picture-)
+- [What are they playing?](#what-are-they-playing)
+- [Are they playing Frisbee?](#are-they-playing-frisbee)
 
 ## 开始的想法
 
