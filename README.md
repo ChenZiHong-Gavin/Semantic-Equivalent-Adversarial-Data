@@ -14,13 +14,13 @@
 
   根据过程分四个模块，分别放在：
 
-  [VQA](../master/util/0. VQA_Demo)
+  [VQA](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/util/0.%20VQA_Demo)
 
-  [IFGSM](../master/util/1. IFGSM_Demo)
+  [IFGSM](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/util/1.%20IFGSM_Demo)
 
-  [OpenNMT](../master/util/2. OpenNMT-Demo)
+  [OpenNMT](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/util/2.%20OpenNMT_Demo)
 
-  [AdversarialTraining](../master/util/3. AdversarialTraining_Demo)
+  [AdversarialTraining](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/util/3.%20AdversarialTraining_Demo)
 
   每个模块都有相应的开发和使用日志，记录在对应文件夹的`LOG.md`中
 
