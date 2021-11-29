@@ -66,7 +66,7 @@
 
 - PPT展示
 
-  PPT在[PPT](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/blob/main/doc/3. PPT)文件夹中
+  PPT在[PPT](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/doc/3.%20PPT)文件夹中
 
   包括背景、方法、难点、结果展示等等
 
