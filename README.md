@@ -20,7 +20,7 @@
 
   [OpenNMT](util/2. OpenNMT-Demo)
 
-  没写完
+  [AdversarialTraining](3. AdversarialTraining_Demo)
 
   每个模块都有相应的开发和使用日志，记录在对应文件夹的`LOG.md`中
 
