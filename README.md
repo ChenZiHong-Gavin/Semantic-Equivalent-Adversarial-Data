@@ -14,13 +14,13 @@
 
   根据过程分四个模块，分别放在：
 
-  [VQA](../master/util)
+  [VQA](../master/util/0. VQA_Demo)
 
-  [IFGSM](util/1. IFGSM_Demo)
+  [IFGSM](../master/util/1. IFGSM_Demo)
 
-  [OpenNMT](util/2. OpenNMT-Demo)
+  [OpenNMT](../master/util/2. OpenNMT-Demo)
 
-  没写完
+  [AdversarialTraining](../master/util/3. AdversarialTraining_Demo)
 
   每个模块都有相应的开发和使用日志，记录在对应文件夹的`LOG.md`中
 
