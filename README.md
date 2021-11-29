@@ -14,7 +14,7 @@
 
   根据过程分四个模块，分别放在：
 
-  [VQA](Semantic-Equivalent-Adversarial-Data)
+  [VQA](../Semantic-Equivalent-Adversarial-Data/util)
 
   [IFGSM](util/1. IFGSM_Demo)
 
