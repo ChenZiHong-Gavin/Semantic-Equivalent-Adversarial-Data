@@ -14,7 +14,7 @@
 
   根据过程分四个模块，分别放在：
 
-  [VQA](util/0. VQA_Demo)
+  [VQA](./util/0. VQA_Demo)
 
   [IFGSM](util/1. IFGSM_Demo)
 
