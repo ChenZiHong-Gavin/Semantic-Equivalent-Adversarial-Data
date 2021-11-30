@@ -4,7 +4,7 @@
 
 ![](fig/overview.png)
 
-![](https://img.shields.io/badge/tool-@chenzihong-gavin-orange.svg?style=plastic)
+![](https://img.shields.io/badge/tool-@chenzihong-orange.svg?style=plastic)
 
 # 目录
 
