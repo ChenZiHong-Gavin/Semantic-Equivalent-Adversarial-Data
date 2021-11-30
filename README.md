@@ -38,7 +38,7 @@
 
   视频上传至B站，欢迎投币
 
-  视频链接在[video](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/video/README.md)中
+  视频链接在[video](https://github.com/ChenZiHong-Gavin/Semantic-Equivalent-Adversarial-Data/tree/main/video)中
 
 - 代码规范
 
